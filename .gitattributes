@@ -1,2 +1,4 @@
 # Arquivos de exemplo usados nos testes: não entram no cálculo de linguagem do GitHub
 data/** linguist-vendored
+*.tex linguist-detectable=false
+*.huff linguist-detectable=false
