@@ -5,7 +5,7 @@ O sistema permite **compressão e descompressão de arquivos utilizando codifica
 
 ---
 
-## 📖 Sobre o Projeto
+## Sobre o Projeto
 
 A compressão de Huffman é um algoritmo clássico de compressão sem perdas que utiliza uma **árvore binária ponderada** para gerar códigos binários de tamanho variável para cada símbolo, de acordo com sua frequência de ocorrência.
 
@@ -20,7 +20,7 @@ Este projeto implementa:
 
 ---
 
-## ⚙️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 * **C** – Linguagem principal do projeto
 * **GCC** – Compilador utilizado
@@ -29,10 +29,10 @@ Este projeto implementa:
 
 ---
 
-## 📂 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
-Huffman
+huffman-compressao-c
 │
 ├── src
 │   ├── compressao.c
@@ -43,23 +43,24 @@ Huffman
 │   ├── animacao.tex
 │   └── animacao.huff
 │
-|__ bin
-|   |__ compressao
-|   |__ descompressao
-|
+├── bin              (gerada na compilação, fora do Git)
 ├── README.md
-└── .gitignore
+├── .gitignore
+└── .gitattributes
 ```
 
 **src/**
 Contém os arquivos de código fonte responsáveis pela implementação da compressão e descompressão.
 
 **data/**
-Contém arquivos utilizados para teste do algoritmo.
+Contém os arquivos utilizados para teste do algoritmo.
+
+**bin/**
+Recebe os executáveis gerados na compilação. Não é versionada, porque binários dependem do sistema de quem compila.
 
 ---
 
-## 🧠 Funcionamento do Algoritmo
+## Funcionamento do Algoritmo
 
 O algoritmo segue as seguintes etapas:
 
@@ -79,39 +80,52 @@ Para descompressão:
 
 ---
 
-## 🚀 Compilação
+## Compilação
 
-Para compilar o programa de compressão:
+A partir da raiz do projeto:
 
-```
-gcc compressao.c -o compressao
-```
-
-Para compilar o programa de descompressão:
-
-```
-gcc descompressao.c -o descompressao
+```bash
+mkdir -p bin
+gcc -Wall src/compressao.c -o bin/compressao
+gcc -Wall src/descompressao.c -o bin/descompressao
 ```
 
 ---
 
-## ▶️ Execução
+## Execução
+
+Os programas leem e escrevem os arquivos `animacao.tex` e `animacao.huff` na pasta em que são executados, por isso devem ser rodados de dentro de `data/`.
 
 ### Compressão
 
-```
-./compressao
+Lê `animacao.tex` e gera `animacao.huff`:
+
+```bash
+cd data
+../bin/compressao
 ```
 
 ### Descompressão
 
+Lê `animacao.huff` e reconstrói `animacao.tex`:
+
+```bash
+cd data
+../bin/descompressao
 ```
-./descompressao
-```
+
+### Resultado com o arquivo de exemplo
+
+| Arquivo | Tamanho |
+| --- | --- |
+| `animacao.tex` (original) | 24.472 bytes |
+| `animacao.huff` (comprimido) | 11.370 bytes |
+
+Redução de cerca de 53,5%. A descompressão reconstrói o arquivo idêntico ao original.
 
 ---
 
-## 📊 Complexidade
+## Complexidade
 
 | Etapa                           | Complexidade |
 | ------------------------------- | ------------ |
@@ -122,7 +136,7 @@ gcc descompressao.c -o descompressao
 
 ---
 
-## 🎓 Contexto Acadêmico
+## Contexto Acadêmico
 
 Projeto desenvolvido como parte da disciplina de **Estruturas de Dados**, com o objetivo de aplicar conceitos de:
 
@@ -133,9 +147,9 @@ Projeto desenvolvido como parte da disciplina de **Estruturas de Dados**, com o 
 
 ---
 
-## 👨‍💻 Autor
+## Autor
 
-**Anderson Almeida**
+**Andeson da Cruz de Almeida**
 
 Estudante de Bacharelado em Tecnologia da Informação
 Interesses em Engenharia de Software, Backend e Estruturas de Dados.

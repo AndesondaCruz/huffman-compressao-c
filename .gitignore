@@ -1,0 +1,4 @@
+# Binários gerados pela compilação (ver README)
+bin/
+*.o
+a.out
